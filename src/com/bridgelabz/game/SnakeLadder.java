@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class SnakeLadder {
 
 	public static void main(String[] args) {
+		int WINNING_POSITION = 100;
 		int startPosition = 0, numberOfPlayer = 1;
 
 		Scanner scanner = new Scanner(System.in);
@@ -14,7 +15,7 @@ public class SnakeLadder {
 		System.out.println("Current Position: " + startPosition);
 
 		// Iterate Till Position Reaches 100
-		while(startPosition <= 100) {
+		while(startPosition != WINNING_POSITION) {
 			// Start Game.
 			System.out.print("Press 1 To Roll Dice: ");
 			int number = scanner.nextInt();
@@ -37,6 +38,9 @@ public class SnakeLadder {
 				case 1:
 					System.out.println("OPTION: Ladder");
 					startPosition = startPosition + dice;
+					if (startPosition > WINNING_POSITION) {
+						startPosition -= dice;
+					}
 					break;
 				default:
 					System.out.println("OPTION: Snake");
